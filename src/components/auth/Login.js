@@ -39,7 +39,8 @@ const Login = props => {
         ></input>
         <label htmlFor="inputPassword">Password</label>
         <h3> </h3>
-        <button type="submit">Submit</button>
+        <button 
+        type="submit">Submit</button>
       </fieldset>
     </form>
   );
