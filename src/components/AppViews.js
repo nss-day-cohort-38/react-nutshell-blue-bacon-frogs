@@ -62,12 +62,6 @@ const AppViews = props => {
           return <ArticleForm {...props} />;
         }}
       />
-      <Route
-        path="/login"
-        render={props => {
-          return <Login setUser={setUser} hasUser={hasUser} {...props} />;
-        }}
-      />
 
       <Route
         path="/messages"
@@ -81,24 +75,14 @@ const AppViews = props => {
           return <RegisterForm setUser={setUser} {...props} />;
         }}
       />
-      <Route
-        path="/login"
-        render={props => {
-          return <Login setUser={setUser} hasUser={hasUser} {...props} />;
-        }}
-      />
+      
       <Route
         path="/messages"
         render={props => {
           return <ChatBox userId={loggedInUser} {...props} />;
         }}
       />
-      <Route
-        path="/register"
-        render={props => {
-          return <RegisterForm setUser={setUser} {...props} />;
-        }}
-      />
+      
       <Route
         exact
         path="/tasks"
