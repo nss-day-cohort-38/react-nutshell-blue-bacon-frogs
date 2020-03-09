@@ -23,6 +23,7 @@ const AppViews = props => {
   return (
     <React.Fragment>
       <Route
+        exact
         path="/login"
         render={props => {
           return <Login setUser={setUser} {...props} />;
@@ -30,9 +31,9 @@ const AppViews = props => {
       />
       <Route
         exact
-        path="/"
+        path="/home"
         render={props => {
-          if (hasUser) {
+          if (isAuthenticated) {
             return <Home />;
           } else {
             return <Redirect to="/login" />;

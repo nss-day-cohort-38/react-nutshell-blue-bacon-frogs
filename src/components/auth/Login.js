@@ -20,7 +20,8 @@ const Login = props => {
           user.password === credentials.password)
           if (user !== undefined) {
             sessionStorage.setItem("userId", user.id)
-            props.history.push("/")
+            console.log(props.history)
+            props.history.push("/home")
           } else {
             window.alert("try again")
           }
