@@ -13,12 +13,7 @@ const Login = props => {
     setCredentials(stateToChange);
   };
   const handleLogin = (evt) => {
-    console.log("handleLogin called")
-
-    //props from appviews to set user equal to the value of credentials
-    props.setUser(credentials);
-    console.log("credentials set")
-    //props from route
+    props.setUser(credentials)
     API.get("users")
       .then(users => {
         const user = users.find(user => user.email === credentials.email && 
@@ -41,7 +36,7 @@ const Login = props => {
           type="email"
           id="email"
           placeholder="email address"
-        ></input>
+          ></input>
         <label htmlFor="inputEmail">Email Address</label>
       </div>
       <div>

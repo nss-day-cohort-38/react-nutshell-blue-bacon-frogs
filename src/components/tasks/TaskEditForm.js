@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import API from "../../modules/ApiManager"
 
 const TaskEditForm = (props) => {
-    const [tasks, setTasks] = useState({userId: props.activeUser, task: "", expectedCompletionDate: "", isComplete: false})
+    const [tasks, setTasks] = useState({userId: "", task: "", expectedCompletionDate: "", isComplete: false})
     const [isLoading, setIsLoading] = useState(false)
 
     const handleFieldChange = (e) => {
