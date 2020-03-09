@@ -9,12 +9,13 @@ const AppViews = (props) => {
     const hasUser = props.hasUser;
     const setUser = props.setUser;
     const isAuthenticated = props.isAuthenticated
+    const loggedInUser = 1;
     
     return (
         <React.Fragment>
 
             <Route path="/login" render={props => {
-                return <Login setUser={setUser} hasUser={hasUSer} {...props} />
+                return <Login setUser={setUser} hasUser={hasUser} {...props} />
             }} />
             <Route path="/" render={props => {
                 if (hasUser) {
