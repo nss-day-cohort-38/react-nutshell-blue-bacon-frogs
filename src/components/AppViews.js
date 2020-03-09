@@ -81,13 +81,6 @@ const AppViews = props => {
       />
       
       <Route
-        path="/messages"
-        render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
-        }}
-      />
-      
-      <Route
         exact
         path="/tasks"
         render={props => {
