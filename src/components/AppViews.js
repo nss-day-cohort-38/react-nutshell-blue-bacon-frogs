@@ -8,12 +8,13 @@ import RegisterForm from "./auth/RegisterForm"
 const AppViews = (props) => {
     const hasUser = props.hasUser;
     const setUser = props.setUser;
-    let loggedInUser = 1;
+    const isAuthenticated = props.isAuthenticated
+    
     return (
         <React.Fragment>
 
             <Route path="/login" render={props => {
-                return <Login setUser={setUser} {...props} />
+                return <Login setUser={setUser} hasUser={hasUSer} {...props} />
             }} />
             <Route path="/" render={props => {
                 if (hasUser) {

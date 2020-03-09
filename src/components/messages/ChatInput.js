@@ -2,17 +2,17 @@ import API from "../../modules/ApiManager"
 import React, { useState, useEffect } from "react";
 
 const ChatInput = (props) => {
-  const [messageInput, setMessageInput] = useState({userId: props.userId, message: "", time: "" });
+  // const [messageInput, setMessageInput] = useState({userId: props.userId, message: "", time: "" });
 
-  const sendMessage = () => {
-    API.save(messageInput, "messages")
-  }
+  // const sendMessage = () => {
+  //   API.save(messageInput, "messages")
+  // }
 
   const handleFieldChange = evt => {
-    const stateToChange = { ...messageInput };
+    const stateToChange = { ...props.messageInput };
     stateToChange[evt.target.id] = evt.target.value;
     stateToChange.time = Date.now()
-    setMessageInput(stateToChange);
+    props.setMessageInput(stateToChange);
   };
 
   return (
@@ -31,7 +31,7 @@ const ChatInput = (props) => {
         type="button"
         id="chatSubmitButton"
         value=""
-        onClick={sendMessage}
+        onClick={props.sendMessage}
       >Send</button>
     </div>
     </>

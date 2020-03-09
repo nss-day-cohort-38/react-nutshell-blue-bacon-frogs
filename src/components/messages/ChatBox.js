@@ -5,6 +5,7 @@ import ChatInput from "./ChatInput"
 
 const ChatBox = (props) => {
   const [messages, setMessages] = useState([]);
+  const [messageInput, setMessageInput] = useState({userId: props.userId, message:"", time:""})
 
   const getMessages = () => {
     return API.get("messages", "user").then(messagesFromAPI => {
@@ -31,7 +32,10 @@ const ChatBox = (props) => {
         ))}
       </div>
       <div id="chatInput">
-        <ChatInput {...props} />
+        <ChatInput 
+        messageInput={messageInput}
+        setMessageInput={setMessageInput}
+        {...props} />
       </div>
     </div>
   );

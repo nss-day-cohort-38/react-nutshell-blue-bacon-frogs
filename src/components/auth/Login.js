@@ -21,18 +21,14 @@ const Login = props => {
     //props from route
     API.get("users")
       .then(users => {
-        console.log(users)
-        console.log("in the dot then")
-        for (let i = 0; i < users.length; i++) {
-          console.log("in the iteration")
-          if (users[i].email === credentials.email && users[i].password === credentials.password) {
-            console.log("email and password match")
-            return props.history.push("/")
+        const user = users.find(user => user.email === credentials.email && 
+          user.password === credentials.password)
+          if (user !== undefined) {
+            sessionStorage.setItem("userId", user.id)
+            props.history.push("/")
           } else {
-            console.log("else email doesn't match")
-            return <Route path="/login" />
+            window.alert("try again")
           }
-        }
       })
   };
 

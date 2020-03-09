@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API from "../../modules/ApiManager"
 
 const RegisterForm = props => {
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
+  const [credentials, setCredentials] = useState({ username: "", email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
 
   const handleFieldChange = evt => {
     const stateToChange = { ...credentials };
@@ -15,14 +15,12 @@ const RegisterForm = props => {
     props.setUser(credentials);
     API.get("users")
       .then(users => {
-        for (let i = 0; i < users.length; i++) {
-          if (users[i].email === credentials.email) {
-            console.log("email already exists")
-            props.history.push("/register")
-          } else {
-            API.save("credentials", "users")
-            props.history.push("/")
-          }
+        const user = users.find(user => user.email === credentials.email )
+        if (user === undefined) {
+          setCredentials("credentials")
+          API.save(credentials, "users")
+        } else {
+          window.alert("email already exists")
         }
       })
   };
@@ -34,8 +32,8 @@ const RegisterForm = props => {
         <label htmlFor="inputName">Name</label>
         <input
           onChange={handleFieldChange}
-          type="name"
-          id="name"
+          type="username"
+          id="username"
           placeholder="full name"
         ></input>
       </div>
@@ -58,7 +56,7 @@ const RegisterForm = props => {
         ></input>
         <div>
           <button
-            type="submit"
+            type="button"
             onClick={handleRegister}
           >Submit</button>
         </div>
