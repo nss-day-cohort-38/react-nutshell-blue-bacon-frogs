@@ -6,7 +6,7 @@ const EventForm = props => {
     name: "",
     venue: "",
     date: "",
-    userId: sessionStorage.getItem("userId")
+    userId: parseInt(sessionStorage.getItem("userId"))
   });
   
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +21,9 @@ const EventForm = props => {
     evt.preventDefault();
     if (event.name === "" || event.venue === "" || event.date === "") {
       alert("Please complete all fields.");
+    } else if (Date.parse(event.date) < Date.now())
+    {
+      alert("You may not add an event from the past.")
     } else {
       setIsLoading(true);
       API.save(event, "events").then(() => props.history.push("/events"));

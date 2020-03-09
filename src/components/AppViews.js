@@ -29,6 +29,7 @@ const AppViews = props => {
         }}
       />
       <Route
+        exact
         path="/"
         render={props => {
           if (hasUser) {

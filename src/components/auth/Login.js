@@ -3,7 +3,7 @@ import API from "../../modules/ApiManager"
 import { Route, Link } from "react-router-dom"
 
 const Login = props => {
-  const [credentials, setCredentials] = useState({email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
+  const [credentials, setCredentials] = useState({email: "", password: "", userId: ""}); //initial state equal to an object with keys email and password that have empty string value
   //handleFieldChange handles each state update and targets the values of email and password
   const handleFieldChange = evt => {
     //a variable which takes in email and password
