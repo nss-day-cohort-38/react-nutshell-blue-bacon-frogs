@@ -9,7 +9,7 @@ const ArticleCard = props => {
         <h3>
           <span className="content-articleName">{props.article.title}</span>
         </h3>
-        <p>Synopsis: {props.article.synopsis}</p>
+        <p>Synopsis: {props.article.synopsis}<br></br><span><a href={props.article.url} target="_blank">Link</a></span></p>
         <button
           type="button"
           onClick={() => props.history.push(`/articles/${props.article.id}/edit`)}
