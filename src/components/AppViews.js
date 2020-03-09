@@ -33,7 +33,7 @@ const AppViews = props => {
         exact
         path="/home"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <Home />;
           } else {
             return <Redirect to="/login" />;
