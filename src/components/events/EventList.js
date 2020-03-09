@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventCard from "./EventCard";
 import API from "../../modules/ApiManager";
-import Events from "./Events.css";
+import "./Events.css";
 
 const EventList = props => {
   const activeUserId = (sessionStorage.getItem("userId"));
