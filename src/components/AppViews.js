@@ -2,6 +2,9 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./auth/Login";
 import Home from "./home/Home";
+import EventList from "./events/EventList";
+import EventForm from "./events/EventForm";
+import EventEditForm from "./events/EventEditForm";
 import ArticleList from "./articles/ArticleList";
 import ArticleEditForm from "./articles/ArticleEditForm";
 import ArticleForm from "./articles/ArticleForm";
@@ -109,6 +112,39 @@ const AppViews = props => {
         render={props => {
           if (hasUser) {
             return <TaskEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+            <Route
+        exact
+        path="/events"
+        render={props => {
+          if (hasUser) {
+            return <EventList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/events/new"
+        render={props => {
+          if (hasUser) {
+            return <EventForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/events/:eventId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <EventEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }

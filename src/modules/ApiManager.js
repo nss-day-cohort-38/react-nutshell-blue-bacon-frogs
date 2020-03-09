@@ -1,5 +1,11 @@
 const apiURL = "http://localhost:5002/";
+
+// http://localhost:5002/events?userId=2
+
 const API = {
+    getWithId(str, userId) {
+        return fetch(apiURL + str + "?userId=" + userId).then(entries => entries.json());
+    },
     get(str) {
         return fetch(apiURL + str).then(entries => entries.json());
     },
