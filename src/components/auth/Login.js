@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import API from "../../modules/ApiManager"
+import { Route, Link } from "react-router-dom"
 
 const Login = props => {
   const [credentials, setCredentials] = useState({email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
@@ -10,17 +12,29 @@ const Login = props => {
     //the state of the credentials changes to the value of email and password
     setCredentials(stateToChange);
   };
-  const handleLogin = evt => {
-    evt.preventDefault();
+  const handleLogin = (evt) => {
+    console.log("handleLogin called")
+
     //props from appviews to set user equal to the value of credentials
     props.setUser(credentials);
+    console.log("credentials set")
     //props from route
-    props.history.push("/home");
+    API.get("users")
+      .then(users => {
+        const user = users.find(user => user.email === credentials.email && 
+          user.password === credentials.password)
+          if (user !== undefined) {
+            sessionStorage.setItem("userId", user.id)
+            props.history.push("/")
+          } else {
+            window.alert("try again")
+          }
+      })
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <fieldset>
+    <>
+      <div>
         <h3>Sign in</h3>
         <input
           onChange={handleFieldChange}
@@ -29,8 +43,8 @@ const Login = props => {
           placeholder="email address"
         ></input>
         <label htmlFor="inputEmail">Email Address</label>
-      </fieldset>
-      <fieldset>
+      </div>
+      <div>
         <input
           onChange={handleFieldChange}
           type="password"
@@ -39,9 +53,18 @@ const Login = props => {
         ></input>
         <label htmlFor="inputPassword">Password</label>
         <h3> </h3>
-        <button type="submit">Submit</button>
-      </fieldset>
-    </form>
+        <button
+          type="submit"
+          onClick={handleLogin}
+        >Submit</button>
+        <div>
+          <Link to="/register" >
+            <button
+            >Create Account</button>
+          </Link>
+        </div>
+      </div>
+    </>
   );
 };
 
