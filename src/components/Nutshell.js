@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import NavBar from "./nav/NavBar"
 import AppViews from "./AppViews"
 
-const Nutshell = () => {
+const Nutshell = (props) => {
 
     const isAuthenticated = () => sessionStorage.getItem("credentials") !== null; //begins with null credentials when function is called
     const [hasUser, setHasUser] = useState(isAuthenticated()); //begins with initial state of null
@@ -19,8 +19,8 @@ const Nutshell = () => {
 
     return (
         <>
-        <NavBar hasUser={hasUser} clearUser={clearUser} />
-        <AppViews hasUser={hasUser} setUser={setUser}/>
+        <NavBar hasUser={hasUser} clearUser={clearUser} {...props}/>
+        <AppViews hasUser={hasUser} setUser={setUser} {...props}/>
         </>
     )
 }
