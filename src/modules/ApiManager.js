@@ -28,6 +28,9 @@ const API = {
             },
             body: JSON.stringify(objToEdit)
         });
+    },
+    expand(str, toExpand) {
+      return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries => entries.json());
     }
 }
 export default API;

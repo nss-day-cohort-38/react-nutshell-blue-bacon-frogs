@@ -4,11 +4,16 @@ import Login from "./auth/Login";
 import Home from "./home/Home";
 import ArticleList from "./articles/ArticleList";
 import ArticleEditForm from "./articles/ArticleEditForm";
-import ArticleForm from "./articles/ArticleForm"
+import ArticleForm from "./articles/ArticleForm";
+import ChatBox from "./messages/ChatBox"
+import RegisterForm from "./auth/RegisterForm"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
+  const isAuthenticated = props.isAuthenticated;
+  const loggedInUser = 1;
+  
   return (
     <React.Fragment>
       <Route
@@ -52,6 +57,25 @@ const AppViews = props => {
         path="/articles/new"
         render={props => {
           return <ArticleForm {...props} />;
+        }}
+      />
+      <Route
+        path="/login"
+        render={props => {
+          return <Login setUser={setUser} hasUser={hasUser} {...props} />;
+        }}
+      />
+      
+      <Route
+        path="/messages"
+        render={props => {
+          return <ChatBox userId={loggedInUser} {...props} />;
+        }}
+      />
+      <Route
+        path="/register"
+        render={props => {
+          return <RegisterForm setUser={setUser} {...props} />;
         }}
       />
     </React.Fragment>
