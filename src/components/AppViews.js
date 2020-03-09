@@ -2,14 +2,20 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./auth/Login";
 import Home from "./home/Home";
-import UserForm from "./auth/NewUser";
 import EventList from "./events/EventList";
 import EventForm from "./events/EventForm";
 import EventEditForm from "./events/EventEditForm";
+import TaskForm from "../components/tasks/TaskForm";
+import TaskList from "../components/tasks/TaskList";
+import TaskEditForm from "../components/tasks/TaskEditForm";
+import ChatBox from "./messages/ChatBox";
+import RegisterForm from "./auth/RegisterForm";
 
 const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
+  const isAuthenticated = props.isAuthenticated;
+  const loggedInUser = 1;
   return (
     <React.Fragment>
       <Route
@@ -17,13 +23,6 @@ const AppViews = props => {
         path="/login"
         render={props => {
           return <Login setUser={setUser} {...props} />;
-        }}
-      />
-      <Route
-        exact
-        path="/userForm"
-        render={props => {
-          return <UserForm setUser={setUser} {...props} />;
         }}
       />
       <Route
@@ -65,6 +64,49 @@ const AppViews = props => {
         render={props => {
           if (hasUser) {
             return <EventEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/messages"
+        render={props => {
+          return <ChatBox userId={loggedInUser} {...props} />;
+        }}
+      />
+      <Route
+        path="/register"
+        render={props => {
+          return <RegisterForm setUser={setUser} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/tasks"
+        render={props => {
+          if (hasUser) {
+            return <TaskList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/tasks/new"
+        render={props => {
+          if (hasUser) {
+            return <TaskForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/tasks/:taskId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <TaskEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }

@@ -3,8 +3,11 @@ const apiURL = "http://localhost:5002/";
 // http://localhost:5002/events?userId=2
 
 const API = {
-    get(str, userId) {
+    getWithId(str, userId) {
         return fetch(apiURL + str + "?userId=" + userId).then(entries => entries.json());
+    },
+    get(str) {
+        return fetch(apiURL + str).then(entries => entries.json());
     },
     save(objToSave, str) {
         return fetch(apiURL + str, {
@@ -31,6 +34,10 @@ const API = {
             },
             body: JSON.stringify(objToEdit)
         });
-    }
+    }, 
+    expand(str, toExpand) {
+        return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries => entries.json());
+      }
 }
 export default API;
+

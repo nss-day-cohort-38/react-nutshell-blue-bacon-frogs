@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import NavBar from "./nav/NavBar"
 import AppViews from "./AppViews"
 
-const Nutshell = () => {
+const Nutshell = (props) => {
 
     sessionStorage.setItem("userId", 2);
 
@@ -21,8 +21,8 @@ const Nutshell = () => {
 
     return (
         <>
-        <NavBar hasUser={hasUser} clearUser={clearUser} />
-        <AppViews hasUser={hasUser} setUser={setUser}/>
+        <NavBar hasUser={hasUser} clearUser={clearUser} {...props}/>
+        <AppViews hasUser={hasUser} setUser={setUser} {...props}/>
         </>
     )
 }

@@ -13,7 +13,8 @@ const EventList = props => {
   };
 
   const getEvents = (str, num) => {
-    return API.get(str, num).then(eventsFromAPI => {
+    console.log("Id", activeUserId)
+    return API.getWithId(str, num).then(eventsFromAPI => {
       sortEvents(eventsFromAPI);
       setEvents(eventsFromAPI);
     });
@@ -21,7 +22,7 @@ const EventList = props => {
 
   const deleteEvent = (id, str) => {
     API.delete(id, str).then(() =>
-      API.get(str, activeUserId).then(allEvents => {
+      API.getWithId(str, activeUserId).then(allEvents => {
         sortEvents(allEvents);
         setEvents(allEvents);
       })
@@ -29,6 +30,7 @@ const EventList = props => {
   };
 
   useEffect(() => {
+    console.log("userID", activeUserId)
     getEvents("events", activeUserId);
   }, []);
 
