@@ -6,7 +6,7 @@ const Nutshell = (props) => {
 
     //sessionStorage.setItem("userId", 2);
 
-    const isAuthenticated = () => sessionStorage.getItem("credentials") !== null; //begins with null credentials when function is called
+    const isAuthenticated = () => sessionStorage.getItem("userId") !== null; //begins with null credentials when function is called
     const [hasUser, setHasUser] = useState(isAuthenticated()); //begins with initial state of null
 
     const setUser = (user) => {
