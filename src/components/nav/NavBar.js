@@ -14,7 +14,7 @@ const NavBar = props => {
       {props.hasUser ? (
         <ul className="navList">
           <li>
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/home">
               Home
             </Link>
           </li>
