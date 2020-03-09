@@ -7,24 +7,32 @@ const ArticleList = props => {
   // The initial state is an empty array
   const [articles, setArticles] = useState([]);
 
-  const getArticles = str => {
+  const getArticles = (str, userId) => {
     // After the data comes back from the API, we
     //  use the setArticles function to update state
-    return API.get(str).then(articlesFromAPI => {
+    return API.getWithId(str, userId).then(articlesFromAPI => {
+      sortArticles(articlesFromAPI);
       setArticles(articlesFromAPI);
     });
   };
+  const sortArticles = articlesArray => {
+    articlesArray.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+  };
 
   const deleteArticle = (id, str) => {
-      
     API.delete(id, str).then(() =>
-      API.get(str).then(setArticles)
+      API.getWithId(str, sessionStorage.getItem("userId")).then(
+        articlesFromAPI => {
+          sortArticles(articlesFromAPI);
+          setArticles(articlesFromAPI);
+        }
+      )
     );
   };
 
   // got the articles from the API on the component's first render
   useEffect(() => {
-    getArticles("articles");
+    getArticles("articles", sessionStorage.getItem("userId"));
   }, []);
 
   // Finally we use map() to "loop over" the articles array to show a list of animal cards

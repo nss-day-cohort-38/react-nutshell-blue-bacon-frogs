@@ -3,7 +3,7 @@ import API from "../../modules/ApiManager";
 //import "./ArticleForm.css";
 
 const ArticleForm = props => {
-  const [article, setArticle] = useState({ title: "", synopsis: "", timestamp: 0, url:"", userId: "" });
+  const [article, setArticle] = useState({ title: "", synopsis: "", timestamp: 0, url:"", userId:  parseInt(sessionStorage.getItem("userId")) });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -23,7 +23,6 @@ const ArticleForm = props => {
       setIsLoading(true);
       const timestamp = new Date().getTime()
       article.timestamp = timestamp
-      console.log()
       // Create the article and redirect user to article list
       API.save(article,"articles")
       .then(() => props.history.push("/articles"));

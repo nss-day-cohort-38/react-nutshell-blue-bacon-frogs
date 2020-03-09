@@ -31,7 +31,7 @@ const AppViews = props => {
       />
       <Route
         exact
-        path="/home"
+        path="/"
         render={props => {
           if (hasUser) {
             return <Home />;
@@ -119,7 +119,7 @@ const AppViews = props => {
           }
         }}
       />
-            <Route
+      <Route
         exact
         path="/events"
         render={props => {
