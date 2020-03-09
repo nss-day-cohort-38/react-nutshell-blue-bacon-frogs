@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager"
 import { Route, Link } from "react-router-dom"
+import "../Nutshell.css"
 
 const Login = props => {
   const [credentials, setCredentials] = useState({email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
@@ -29,24 +30,25 @@ const Login = props => {
 
   return (
     <>
+    <div className="loginForm">
       <div>
         <h3>Sign in</h3>
+        <label htmlFor="inputEmail">Email Address: </label>
         <input
           onChange={handleFieldChange}
           type="email"
           id="email"
           placeholder="email address"
           ></input>
-        <label htmlFor="inputEmail">Email Address</label>
       </div>
       <div>
+      <label htmlFor="inputPassword">Password:</label>
         <input
           onChange={handleFieldChange}
           type="password"
           id="password"
           placeholder="password"
         ></input>
-        <label htmlFor="inputPassword">Password</label>
         <h3> </h3>
         <button
           type="submit"
@@ -58,6 +60,7 @@ const Login = props => {
             >Create Account</button>
           </Link>
         </div>
+      </div>
       </div>
     </>
   );
