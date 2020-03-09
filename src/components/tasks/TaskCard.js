@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 
 const TaskCard = (props) => {
-    
-    return (
+  
+       return (
         <>
         <div className="card-content">
         <input type="checkbox" id="taskCheck" />
