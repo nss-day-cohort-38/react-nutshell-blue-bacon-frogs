@@ -15,12 +15,13 @@ import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
 import FriendshipList from "./friendships/FriendshipList"
 import SearchFriendCard from "./friendships/SearchFriendCard";
+import MessageEditForm from "./messages/MessageEditForm"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
   const isAuthenticated = props.isAuthenticated;
-  const loggedInUser = 1;
+  
 
   return (
     <React.Fragment>
@@ -73,20 +74,24 @@ const AppViews = props => {
       <Route
         path="/messages"
         render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
+          return <ChatBox  {...props} />;
         }}
       />
       <Route
-        path="/register"
+        path="/messages/:messageId(\d+)/edit"
         render={props => {
-          return <RegisterForm setUser={setUser} {...props} />;
+          if (hasUser) {
+            return <MessageEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
 
       <Route
-        path="/messages"
+        path="/register"
         render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
+          return <RegisterForm setUser={setUser} {...props} />;
         }}
       />
 
