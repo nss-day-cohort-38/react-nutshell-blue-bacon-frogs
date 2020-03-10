@@ -2,7 +2,6 @@ import React from "react";
 
 const ChatMessage = props => {
 
-  const timeStamp = props.message.time
   const editButtonClick = () => {
     props.setIsEditing(true)
     const messageToEdit = {
@@ -19,8 +18,8 @@ const ChatMessage = props => {
 
   return (
     <div className="chatMessage">
-      <input id={`message--${props.message.id}`} type="hidden"/>
-      {firstName}: {props.message.message}   
+      <input id={`message--${props.message.id}`} type="hidden" />
+      {firstName}: {props.message.message}
       {/* <span class="messageTime">{timeStamp.toLocaleString()}</span> */}
       <span>      </span>
       <button

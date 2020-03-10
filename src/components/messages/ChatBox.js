@@ -4,7 +4,6 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput"
 import MessageEditForm from "./MessageEditForm";
 
-
 const ChatBox = (props) => {
   const userId = sessionStorage.getItem("userId");
 
@@ -19,7 +18,6 @@ const ChatBox = (props) => {
     id: ""
   });
 
-
   const getMessages = () => {
     return API.expand("messages", "user").then(messagesFromAPI => {
       setMessages(messagesFromAPI);
@@ -30,7 +28,6 @@ const ChatBox = (props) => {
     getMessages();
 
   }, []);
-  
 
   if (isEditing === false) {
     return (

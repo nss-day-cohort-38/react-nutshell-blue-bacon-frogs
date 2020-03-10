@@ -39,7 +39,6 @@ const MessageEditForm = props => {
           props.setIsEditing(false)
         });
       })
-
   };
 
   return (
@@ -70,10 +69,8 @@ const MessageEditForm = props => {
             </button>
           <button
             type="button"
-            
             onClick={cancelButton}>
-
-          Cancel</button>
+            Cancel</button>
         </div>
       </fieldset>
 
