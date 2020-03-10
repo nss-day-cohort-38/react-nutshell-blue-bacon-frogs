@@ -38,10 +38,10 @@ const ArticleList = props => {
   // Finally we use map() to "loop over" the articles array to show a list of animal cards
   return (
     <React.Fragment>
-      <section className="section-content">
+      <section className="addSectionContainer">
         <button
           type="button"
-          className="btn"
+          className="addSection"
           onClick={() => {
             props.history.push("/articles/new");
           }}
