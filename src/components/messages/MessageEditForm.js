@@ -3,12 +3,6 @@ import API from "../../modules/ApiManager";
 
 const MessageEditForm = props => {
 
-  // const [message, setMessage] = useState({
-  //   message: "",
-  //   userId: "",
-  //   time: "",
-  // }); ---MOVED TO CHATBOX---
-
   const [isLoading, setIsLoading] = useState(true);
 
   const handleFieldChange = evt => {
