@@ -3,9 +3,9 @@ import React from "react";
 //import { Link } from "react-router-dom";
 
 const ArticleCard = props => {
-  return (
-    <div className="card">
+  return ( 
       <div className="card-content">
+        <div>
         <h3>
           <span className="content-articleName">{props.article.title}</span>
         </h3>
@@ -22,8 +22,8 @@ const ArticleCard = props => {
         >
           Delete
         </button>
+        </div>
       </div>
-    </div>
   );
 };
 

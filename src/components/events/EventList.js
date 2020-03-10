@@ -34,18 +34,17 @@ const EventList = props => {
 
   return (
     <>
-      <section>
-        <button
+      <section className="addSectionContainer">
+        <button className="addSection"
           type="button"
-          className="btn"
           onClick={() => {
             props.history.push("/events/new");
           }}
         >
-          Add new event
+          Add event
         </button>
       </section>
-      <div className="event-cards">
+      <div className="container-card">
         {events.map(event => (
           <EventCard
             key={event.id}
