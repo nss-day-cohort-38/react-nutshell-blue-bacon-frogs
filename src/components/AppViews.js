@@ -19,7 +19,7 @@ const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
   const isAuthenticated = props.isAuthenticated;
-  const loggedInUser = 1;
+  const loggedInUser = sessionStorage.getItem("userId");
 
   return (
     <React.Fragment>
