@@ -33,7 +33,7 @@ const TaskList = (props) => {
                     Add Task
                 </button>
         <div className="container-card">
-            {tasks.map(task => <TaskCard key={task.id} task={task} expectedCompletionDate={task.expectedCompletionDate} delete={deleteTasks} {...props}/>)}
+            {tasks.map(task => <TaskCard key={task.id} task={task} expectedCompletionDate={task.expectedCompletionDate} delete={deleteTasks} getTasks={getTasks} {...props}/>)}
         </div>
         </>
     )
