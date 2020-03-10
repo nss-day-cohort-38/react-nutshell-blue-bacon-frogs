@@ -13,12 +13,13 @@ import TaskList from "../components/tasks/TaskList";
 import TaskEditForm from "../components/tasks/TaskEditForm";
 import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
+import MessageEditForm from "./messages/MessageEditForm"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
   const isAuthenticated = props.isAuthenticated;
-  const loggedInUser = 1;
+  
 
   return (
     <React.Fragment>
@@ -71,20 +72,23 @@ const AppViews = props => {
       <Route
         path="/messages"
         render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
+          return <ChatBox  {...props} />;
+        }}
+      />
+      <Route
+        path="/messages/:messageId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <MessageEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/register"
         render={props => {
           return <RegisterForm setUser={setUser} {...props} />;
-        }}
-      />
-      
-      <Route
-        path="/messages"
-        render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
         }}
       />
       
