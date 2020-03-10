@@ -41,41 +41,73 @@ const MessageEditForm = props => {
       })
   };
 
-  return (
-    <>
+  if (isLoading) {
+    return (
+      <>
 
-      <fieldset>
-        <div className="formgrid">
-          <label htmlFor="name">Message to Edit</label>
-          <div>
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="message"
-              value={props.message.message}
-            />
+        <fieldset>
+          <div className="formgrid">
+            <label htmlFor="name">Message to Edit</label>
+            <div>
+              <input
+                type="text"
+                required
+                className="form-control"
+                onChange={handleFieldChange}
+                id="message"
+                value={props.message.message}
+              />
+            </div>
           </div>
-        </div>
-        <div className="alignRight">
-          <button
-            type="button"
-            disabled={isLoading}
-            onClick={updateExistingMessage}
-            className="btn btn-primary"
-          >
-            Apply Change
-            </button>
-          <button
-            type="button"
-            onClick={cancelButton}>
-            Cancel</button>
-        </div>
-      </fieldset>
+          <div className="alignRight">
 
-    </>
-  );
+            <button
+              type="button"
+              onClick={cancelButton}>
+              Cancel</button>
+          </div>
+        </fieldset>
+
+      </>
+    );
+
+  } else {
+    return (
+      <>
+
+        <fieldset>
+          <div className="formgrid">
+            <label htmlFor="name">Message to Edit</label>
+            <div>
+              <input
+                type="text"
+                required
+                className="form-control"
+                onChange={handleFieldChange}
+                id="message"
+                value={props.message.message}
+              />
+            </div>
+          </div>
+          <div className="alignRight">
+            <button
+              type="button"
+              disabled={isLoading}
+              onClick={updateExistingMessage}
+              className="btn btn-primary"
+            >
+              Apply Change
+            </button>
+            <button
+              type="button"
+              onClick={cancelButton}>
+              Cancel</button>
+          </div>
+        </fieldset>
+
+      </>
+    );
+  }
 };
 
 export default MessageEditForm;
