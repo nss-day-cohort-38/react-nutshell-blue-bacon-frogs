@@ -4,6 +4,7 @@ import API from "../../modules/ApiManager"
 const TaskCard = (props) => {
     const [isComplete, setIsComplete] = useState() 
     const [textColor, setTextColor] = useState()
+    const [backgroundColor, setBackgroundColor] = useState()
 
     const toggleCheck = () => {
         setIsComplete(!isComplete) //changing the state in the card
@@ -16,8 +17,10 @@ const TaskCard = (props) => {
     useEffect(() => {
         if(!props.task.isComplete) {
             setTextColor({textDecoration: 'none'})
+            setBackgroundColor({backgroundColor: 'white'})
         } else {
             setTextColor({textDecoration: 'line-through'})
+            setBackgroundColor({backgroundColor: '#4A5C9B'})
         }
     }, [props.task])
 
@@ -27,12 +30,14 @@ const TaskCard = (props) => {
 
        return (
         <>
-        <div className="card-content">
-        <input type="checkbox" id="taskCheck" checked={props.task.isComplete} onChange={toggleCheck} />
-        <p style={textColor} className="taskName">Task Name {props.task.task}</p>
-        <p className="date">Expected Completion Date {props.task.expectedCompletionDate}</p>
+        <div className="card-content" style={backgroundColor}>
+        <input type="checkbox"className="taskCheck" id="taskCheck" checked={props.task.isComplete} onChange={toggleCheck} />
+        <p style={textColor} className="taskName"> {props.task.task}</p>
+        <p className="date">{props.task.expectedCompletionDate}</p>
+        <div className="crudButtons">
+        <button className="editButton" type="button" onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}>Edit</button>
         <button type="button" onClick={() => props.delete(props.task.id)}>Delete</button>
-        <button type="button" onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}>Edit</button>
+        </div>
         </div>
         </>
     

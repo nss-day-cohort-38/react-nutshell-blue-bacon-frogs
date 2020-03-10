@@ -37,6 +37,7 @@ const TaskEditForm = (props) => {
     return (
         <form>
             <fieldset>
+            <label htmlFor="task">Task</label>
             <input
               type="text"
               required
@@ -44,9 +45,9 @@ const TaskEditForm = (props) => {
               id="task"
               value={tasks.task}
             />
-                <label htmlFor="task">Task</label>
             </fieldset>
             <fieldset>
+            <label htmlFor="expectedCompletionDate">Expected Completion Date</label>
             <input
               type="date"
               required
@@ -54,7 +55,6 @@ const TaskEditForm = (props) => {
               id="expectedCompletionDate"
               value={tasks.expectedCompletionDate}
             />
-            <label htmlFor="expectedCompletionDate">Expected Completion Date</label>
             </fieldset>
             <button
               type="button"

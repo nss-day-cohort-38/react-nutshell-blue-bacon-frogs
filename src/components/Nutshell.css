@@ -15,8 +15,36 @@ body button {
     color:  #160D58;
 }
 body button:hover {
-    background-color: #EA9800;
+    background-color:rgb(255, 197, 91);
 }
+
+/* Controlling overall cards for articles and tasks */
+.card-content {
+    font-family: 'Lora', serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 30px;
+    margin-left: 450px;
+    margin-right: 40px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:  2.5px 5px rgba(0, 0, 0, 0.14);
+    
+}
+
+.card-content {
+    width: 35%;
+    flex-direction: row;
+}
+
+/* Controlling overall edit and create tasks, etc forms  */
+fieldset {
+    border: 0;
+
+}
+
 /* Login Form */
 .loginForm {
     display: flex;
@@ -72,5 +100,44 @@ body button:hover {
     color: '#EA9800'
 }
 .signLink:hover {
-    color: #EA9800;
+    color: rgb(255, 197, 91);
 }
+
+
+/* Tasks */
+.addTask {
+    font-family: 'Lora', serif;
+    width: 100px;
+    height: 50px;
+    padding-left: 25px;
+}
+
+.crudButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    height: 35px;
+}
+
+.date {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.editButton {
+    margin-right: 10px;
+}
+
+.taskCheck {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin-top: 20px;
+}
+
+.addTaskContainer {
+    display: flex;
+    justify-content: center;
+}
+
