@@ -65,7 +65,7 @@ const MessageEditForm = props => {
             onClick={updateExistingMessage}
             className="btn btn-primary"
           >
-            Submit
+            Apply Change
             </button>
           <button
             type="button"

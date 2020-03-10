@@ -16,6 +16,7 @@ const ChatMessage = props => {
   const name = props.name
   const firstName = name.split(" ")[0]
 
+  if (props.message.userId === props.userId) {
   return (
     <div className="chatMessage">
       <input id={`message--${props.message.id}`} type="hidden" />
@@ -31,6 +32,17 @@ const ChatMessage = props => {
       </button>
     </div>
   );
+} else {
+  return (
+    <div className="chatMessage">
+      <input id={`message--${props.message.id}`} type="hidden" />
+      {firstName}: {props.message.message}
+      {/* <span class="messageTime">{timeStamp.toLocaleString()}</span> */}
+      <span>      </span>
+      
+    </div>
+  );
+}
 };
 
 export default ChatMessage;

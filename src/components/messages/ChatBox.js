@@ -5,7 +5,7 @@ import ChatInput from "./ChatInput"
 import MessageEditForm from "./MessageEditForm";
 
 const ChatBox = (props) => {
-  const userId = sessionStorage.getItem("userId");
+  const userId = parseInt(sessionStorage.getItem("userId"));
 
   const [messages, setMessages] = useState([]);
 
