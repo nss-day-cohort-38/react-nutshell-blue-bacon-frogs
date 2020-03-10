@@ -14,13 +14,13 @@ const Login = props => {
     setCredentials(stateToChange);
   };
   const handleLogin = (evt) => {
-    props.setUser(credentials)
     API.get("users")
       .then(users => {
         const user = users.find(user => user.email === credentials.email && 
           user.password === credentials.password)
           if (user !== undefined) {
             sessionStorage.setItem("userId", user.id)
+            props.setUser(credentials)
             props.history.push("/")
           } else {
             window.alert("try again")

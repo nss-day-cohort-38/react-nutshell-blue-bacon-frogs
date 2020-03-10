@@ -8,6 +8,21 @@ const UserForm = props => {
     password: ""
   });
 
+  const handleLogin = (evt) => {
+    API.get("users")
+      .then(users => {
+        const user = users.find(user => user.email === credentials.email && 
+          user.password === credentials.password)
+          if (user !== undefined) {
+            sessionStorage.setItem("userId", user.id)
+            props.setUser(credentials)
+            props.history.push("/")
+          } else {
+            window.alert("try again")
+          }
+      })
+  };
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleUserFieldChange = evt => {
@@ -60,7 +75,7 @@ const UserForm = props => {
           ></input>
           <label htmlFor="inputPassword">Password</label>
           <h3> </h3>
-          <button type="submit" disabled={isLoading} onClick={makeNewUser}>
+          <button type="submit" disabled={isLoading} onClick={makeNewUser, handleLogin}>
             Submit
           </button>
         </fieldset>

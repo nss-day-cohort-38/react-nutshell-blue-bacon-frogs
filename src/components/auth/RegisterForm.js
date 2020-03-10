@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import API from "../../modules/ApiManager"
+import API from "../../modules/ApiManager";
+import { Route, Link } from "react-router-dom"
 
 const RegisterForm = props => {
-  const [credentials, setCredentials] = useState({ username: "", email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
+  const [credentials, setCredentials] = useState({
+    username: "",
+    email: "",
+    password: ""
+  }); //initial state equal to an object with keys email and password that have empty string value
 
   const handleFieldChange = evt => {
     const stateToChange = { ...credentials };
@@ -12,17 +17,21 @@ const RegisterForm = props => {
 
   const handleRegister = evt => {
     evt.preventDefault();
-    props.setUser(credentials);
-    API.get("users")
-      .then(users => {
-        const user = users.find(user => user.email === credentials.email )
-        if (user === undefined) {
-          setCredentials("credentials")
-          API.save(credentials, "users")
-        } else {
-          window.alert("email already exists")
-        }
-      })
+    API.get("users").then(users => {
+      const user = users.find(user => user.email === credentials.email);
+      if (user === undefined) {
+        setCredentials("credentials");
+        API.save(credentials, "users");
+        API.get("users").then(users => {
+          const newUser = users.find(newUser => newUser.email === credentials.email);
+          sessionStorage.setItem("userId", newUser.id);
+          props.setUser(credentials);
+          props.history.push("/");
+        });
+      } else {
+        window.alert("email already exists");
+      }
+    });
   };
 
   return (
@@ -55,20 +64,18 @@ const RegisterForm = props => {
           placeholder="password"
         ></input>
         <div>
-          <button
-            type="button"
-            onClick={handleRegister}
-          >Submit</button>
+          <button type="button" onClick={handleRegister}>
+            Submit
+          </button>
         </div>
         <div>
-          <button
-            type="submit"
-            
-          >Already A User?</button>
+        <Link to="/login" >
+            <button
+            >Already a user?</button>
+          </Link>
         </div>
       </div>
-      </>
-    
+    </>
   );
 };
 

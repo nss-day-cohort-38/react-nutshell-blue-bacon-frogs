@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventCard from "./EventCard";
 import API from "../../modules/ApiManager";
-import Events from "./Events.css";
+import "./Events.css";
 
 const EventList = props => {
   const activeUserId = (sessionStorage.getItem("userId"));
@@ -13,7 +13,6 @@ const EventList = props => {
   };
 
   const getEvents = (str, num) => {
-    console.log("Id", activeUserId)
     return API.getWithId(str, num).then(eventsFromAPI => {
       sortEvents(eventsFromAPI);
       setEvents(eventsFromAPI);
@@ -30,7 +29,6 @@ const EventList = props => {
   };
 
   useEffect(() => {
-    console.log("userID", activeUserId)
     getEvents("events", activeUserId);
   }, []);
 
