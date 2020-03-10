@@ -1,8 +1,15 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState }  from "react"
 import API from "../../modules/ApiManager"
 
 
-const [friends, setFriends] = useState({
+
+
+const SearchFriendCard = props => {
+
+const friendId = sessionStorage.getItem("friendId")
+const activeUserId = sessionStorage.getItem("userId")
+
+  const [friends, setFriends] = useState({
     username:"",
     email:"",
     password:""
@@ -13,18 +20,28 @@ const handleFieldChange = evt => {
     stateToChange[evt.target.id] = evt.target.value;
     setFriends(stateToChange);
   };
+const checkFriendship= () =>   {
+  API.getFriendList(activeUserId).then(users =>{
+console.log(users[0].userId)
 
+  })
+}
+
+const addFriend = evt => {
+  API.save(friends, "friendships")
+}
   const searchFriend = (evt) =>{
     evt.preventDefault();
     const searchInput = friends.username
-    console.log(searchInput)
+    document.getElementById("search").innerHTML=""
     API.get("users").then(friends => {
         friends.forEach(friend => {
-            console.log("friend",friend)
             for(const value of Object.values(friend)) {
                 if(typeof value === "string" && value.includes(searchInput)) {
-                    
-                  return  document.getElementById("search").innerHTML += `<div>${friend.username}</div>`
+                  sessionStorage.setItem("friendId", friend.id)
+                  console.log(friendId)
+                  return  document.getElementById("search").innerHTML += `<br></br><div>${friend.username} ${friend.id}</div>
+                  <button onClick={${addFriend}} >Add Friend</button>`
                   
                 }
             }
@@ -32,7 +49,9 @@ const handleFieldChange = evt => {
     })
 };
 
-const SearchFriendCard = props => {
+
+checkFriendship()
+
   return (
     <div>
       <button onClick={searchFriend}>Search Friend</button>
@@ -42,6 +61,7 @@ const SearchFriendCard = props => {
         id="username"
         onChange={handleFieldChange}
       ></input>
+      <div id="search"></div>
     </div>
   );
 };

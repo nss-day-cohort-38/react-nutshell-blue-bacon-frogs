@@ -37,6 +37,10 @@ const API = {
     }, 
     expand(str, toExpand) {
         return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries => entries.json());
+      },
+      getFriendList: (userId) => {
+        return fetch (`${apiURL}friendships/?_expand=user&activeId=${userId}`)
+        .then(r=>r.json());
       }
 }
 export default API;

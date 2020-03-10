@@ -14,7 +14,7 @@ const FriendshipList = props => {
   const getUsers = str => {
     // After the data comes back from the API, we
     //  use the setFriends function to update state
-    return API.get(str).then(usersFromAPI => {
+    return API.getFriendList(str).then(usersFromAPI => {
       setUsers(usersFromAPI);
     });
   };
@@ -32,7 +32,7 @@ const FriendshipList = props => {
 
   // got the friends from the API on the component's first render
   useEffect(() => {
-    getUsers("users");
+    getUsers(sessionStorage.getItem("userId"));
   }, []);
 
   // Finally we use map() to "loop over" the friends array to show a list of animal cards
@@ -40,7 +40,9 @@ const FriendshipList = props => {
     <React.Fragment>
       <section>
         
-        {/* <button onClick={}>Search Users</button> */}
+        <button onClick={() => {
+          props.history.push("/friendships/search")
+        }}>Search Users</button>
       </section>
       {/* <div className="container-cards">
         <h3>Friends</h3>
@@ -53,7 +55,7 @@ const FriendshipList = props => {
           />
         ))}
       </div> */}
-      <div id="search"></div>
+      
       <div className="container-cards">
         <h3>Friends</h3>
         {users.map(user => (
