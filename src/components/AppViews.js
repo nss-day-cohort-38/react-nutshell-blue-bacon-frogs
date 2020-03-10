@@ -13,6 +13,7 @@ import TaskList from "../components/tasks/TaskList";
 import TaskEditForm from "../components/tasks/TaskEditForm";
 import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
+import FriendshipList from "./friendships/FriendshipList"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -80,14 +81,14 @@ const AppViews = props => {
           return <RegisterForm setUser={setUser} {...props} />;
         }}
       />
-      
+
       <Route
         path="/messages"
         render={props => {
           return <ChatBox userId={loggedInUser} {...props} />;
         }}
       />
-      
+
       <Route
         exact
         path="/tasks"
@@ -147,6 +148,17 @@ const AppViews = props => {
         render={props => {
           if (hasUser) {
             return <EventEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/friendships"
+        render={props => {
+          if (hasUser) {
+            return <FriendshipList {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
