@@ -26,7 +26,7 @@ const RegisterForm = props => {
           const newUser = users.find(newUser => newUser.email === credentials.email);
           sessionStorage.setItem("userId", newUser.id);
           props.setUser(credentials);
-          props.history.push("/");
+          props.history.push("/home");
         });
       } else {
         window.alert("email already exists");
@@ -38,43 +38,41 @@ const RegisterForm = props => {
     <>
     <div className="loginForm">
       <div>
-        <h3>Sign in</h3>
-        <label htmlFor="inputName">Name</label>
+        <h3>Sign up</h3>
+        <label htmlFor="inputName">Name:</label>
         <input
           onChange={handleFieldChange}
           type="username"
           id="username"
           placeholder="full name"
         ></input>
-      </div>
-      <div>
-        <label htmlFor="inputEmail">Email Address</label>
+  
+        <label htmlFor="inputEmail">Email Address:</label>
         <input
           onChange={handleFieldChange}
           type="email"
           id="email"
           placeholder="email address"
         ></input>
-      </div>
-      <div>
-        <label htmlFor="inputPassword">Password</label>
+     
+        <label htmlFor="inputPassword">Password:</label>
         <input
           onChange={handleFieldChange}
           type="password"
           id="password"
           placeholder="password"
         ></input>
-        <div>
+       
           <button type="button" onClick={handleRegister}>
             Submit
           </button>
-        </div>
-        <div>
-        <Link to="/login" style={{ textDecoration: 'none' ,  color: '#160D58'}} >
-            <button
-            >Already a user?</button>
+        
+        Already a user? <span></span>
+        <Link to="/login"  className="signLink" style={{ textDecoration: 'none'}} >
+            
+            Click here
           </Link>
-        </div>
+       
       </div>
       </div>
     </>

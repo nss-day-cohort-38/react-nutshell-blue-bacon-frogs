@@ -6,6 +6,8 @@ import "../Nutshell.css"
 const Login = props => {
   const [credentials, setCredentials] = useState({email: "", password: "" }); //initial state equal to an object with keys email and password that have empty string value
   //handleFieldChange handles each state update and targets the values of email and password
+  const[linkColor, setLinkColor] = useState()
+
   const handleFieldChange = evt => {
     //a variable which takes in email and password
     const stateToChange = { ...credentials };
@@ -21,7 +23,7 @@ const Login = props => {
           if (user !== undefined) {
             sessionStorage.setItem("userId", user.id)
             props.setUser(credentials)
-            props.history.push("/")
+            props.history.push("/home")
           } else {
             window.alert("try again")
           }
@@ -31,35 +33,34 @@ const Login = props => {
   return (
     <>
     <div className="loginForm">
-      <div>
-        <h3>Sign in</h3>
-        <label htmlFor="inputEmail">Email Address: </label>
-        <input
-          onChange={handleFieldChange}
-          type="email"
-          id="email"
-          placeholder="email address"
-          ></input>
-     
-      <label htmlFor="inputPassword">Password:</label>
-        <input
-          onChange={handleFieldChange}
-          type="password"
-          id="password"
-          placeholder="password"
-        ></input>
-        <div className="loginButtons">
-        <button
-          type="submit"
-          onClick={handleLogin}
-        >Submit</button>
+        <div>
+            <h3>Sign in</h3>
+            <label htmlFor="inputEmail">Email Address: </label>
+            <input
+            onChange={handleFieldChange}
+            type="email"
+            id="email"
+            placeholder="email address"
+            ></input>
         
-          <Link to="/register" style={{ textDecoration: 'none' ,  color: '#160D58'}}  >
+        <label htmlFor="inputPassword">Password:</label>
+            <input
+            onChange={handleFieldChange}
+            type="password"
+            id="password"
+            placeholder="password"
+            ></input>
+            
             <button
-            >Create Account</button>
-          </Link>
+            type="submit"
+            onClick={handleLogin}
+            >Submit</button>
+            <p>Don't have an account? <span></span>
+            <Link to="/register" style={{ textDecoration: 'none' }} className="signLink" >
+                Sign up
+            </Link> </p>
+            
         </div>
-      </div>
       </div>
     </>
   );

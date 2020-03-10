@@ -14,7 +14,9 @@ body button {
     text-decoration: none;
     color:  #160D58;
 }
-
+body button:hover {
+    background-color: #EA9800;
+}
 /* Login Form */
 .loginForm {
     display: flex;
@@ -32,12 +34,11 @@ body button {
 }
 
 .loginForm div {
-    border-top: solid 2px black;
-    border-left: solid 2px black;
-    border-right: solid 2px black;
+    border: solid 1.5px  #160D58;
     border-radius: 10px;
     padding: 30px;
     background-color: white;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
 
 .loginForm input {
@@ -46,12 +47,11 @@ body button {
     color: #666;
     display: block;
     width: 50%;
-    background: rgb(250, 247, 240);
     height: 50px;
-    border-radius: 25px;
     padding: 0 30px 0 68px;
     outline: none;
     border: none;
+    border-bottom: solid 1px rgb(57, 55, 73);
 }
 
 .loginForm h3 {
@@ -59,8 +59,18 @@ body button {
     justify-content: center;
 }
 
+.loginForm button {
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width:50%;
 
-
-.loginForm button:hover {
-    background-color: #EA9800;
+}
+.signLink {
+    color: '#EA9800'
+}
+.signLink:hover {
+    color: #EA9800;
 }

@@ -15,22 +15,22 @@ const TaskCard = (props) => {
     }
     useEffect(() => {
         if(!props.task.isComplete) {
-            setTextColor({color: "red"})
+            setTextColor({textDecoration: 'none'})
         } else {
-            setTextColor({color: "blue"})
+            setTextColor({textDecoration: 'line-through'})
         }
     }, [props.task])
 
     useEffect(() => {
-        setIsComplete(props.task.isComplete) //sets the value of is complete in the card to the value from the database on initialize
+        setIsComplete(props.task.isComplete) //sets the value of is complete in the card to the value from the database on
     }, [])
 
        return (
         <>
         <div className="card-content">
         <input type="checkbox" id="taskCheck" checked={props.task.isComplete} onChange={toggleCheck} />
-        <h4 style={textColor} className="taskName">Task Name {props.task.task}</h4>
-        <h4 className="date">Expected Completion Date {props.task.expectedCompletionDate}</h4>
+        <p style={textColor} className="taskName">Task Name {props.task.task}</p>
+        <p className="date">Expected Completion Date {props.task.expectedCompletionDate}</p>
         <button type="button" onClick={() => props.delete(props.task.id)}>Delete</button>
         <button type="button" onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}>Edit</button>
         </div>
