@@ -12,14 +12,19 @@ const MessageEditForm = props => {
     setIsLoading(false)
   };
 
+  const cancelButton = () => {
+    props.setIsEditing(false)
+    props.getMessages("messages", "users")
+  }
+
   const updateExistingMessage = evt => {
     evt.preventDefault();
     setIsLoading(true);
 
-    API.edit(props.key, "messages")
+    API.edit(props.message.id, "messages")
       .then(message => {
         props.setMessage(message)
-        
+
       })
       .then(() => {
         const editedMessage = {
@@ -29,42 +34,49 @@ const MessageEditForm = props => {
           time: props.message.time,
         };
         API.update(editedMessage, "messages").then(() => {
-        props.history.push("/messages")
-        props.getMessages("messages", "users")
-        props.setIsEditing(false)
-      });})
+          props.history.push("/messages")
+          props.getMessages("messages", "users")
+          props.setIsEditing(false)
+        });
+      })
 
   };
 
   return (
     <>
-      <form>
-        <fieldset>
-          <div className="formgrid">
-            <label htmlFor="name">Message to Edit</label>
-            <div>
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={handleFieldChange}
-                id="message"
-                value={props.message.message}
-              />
-            </div>
+
+      <fieldset>
+        <div className="formgrid">
+          <label htmlFor="name">Message to Edit</label>
+          <div>
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={handleFieldChange}
+              id="message"
+              value={props.message.message}
+            />
           </div>
-          <div className="alignRight">
-            <button
-              type="button"
-              disabled={isLoading}
-              onClick={updateExistingMessage}
-              className="btn btn-primary"
-            >
-              Submit
+        </div>
+        <div className="alignRight">
+          <button
+            type="button"
+            disabled={isLoading}
+            onClick={updateExistingMessage}
+            className="btn btn-primary"
+          >
+            Submit
             </button>
-          </div>
-        </fieldset>
-      </form>
+          <button
+            type="button"
+            
+            onClick={cancelButton}>
+
+          Cancel</button>
+        </div>
+      </fieldset>
+
     </>
   );
 };

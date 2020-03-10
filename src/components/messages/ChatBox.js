@@ -4,7 +4,10 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput"
 import MessageEditForm from "./MessageEditForm";
 
+
 const ChatBox = (props) => {
+  const userId = sessionStorage.getItem("userId");
+
   const [messages, setMessages] = useState([]);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -38,7 +41,7 @@ const ChatBox = (props) => {
               <ChatMessage
                 key={message.id}
                 name={message.user.username}
-                userId={props.userId}
+                userId={userId}
                 message={message}
                 getMessages={getMessages}
                 setIsEditing={setIsEditing}
@@ -49,7 +52,7 @@ const ChatBox = (props) => {
           </div>
           <div id="chatInput">
             <ChatInput
-              userId={props.userId}
+              userId={userId}
               getMessages={getMessages}
 
               {...props} />

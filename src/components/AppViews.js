@@ -19,7 +19,7 @@ const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
   const isAuthenticated = props.isAuthenticated;
-  const loggedInUser = sessionStorage.getItem("userId");
+  
 
   return (
     <React.Fragment>
@@ -72,7 +72,7 @@ const AppViews = props => {
       <Route
         path="/messages"
         render={props => {
-          return <ChatBox userId={loggedInUser} {...props} />;
+          return <ChatBox  {...props} />;
         }}
       />
       <Route
