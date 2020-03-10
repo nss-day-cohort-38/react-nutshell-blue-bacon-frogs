@@ -40,8 +40,7 @@ const Login = props => {
           id="email"
           placeholder="email address"
           ></input>
-      </div>
-      <div>
+     
       <label htmlFor="inputPassword">Password:</label>
         <input
           onChange={handleFieldChange}
@@ -49,13 +48,13 @@ const Login = props => {
           id="password"
           placeholder="password"
         ></input>
-        <h3> </h3>
+        <div className="loginButtons">
         <button
           type="submit"
           onClick={handleLogin}
         >Submit</button>
-        <div>
-          <Link to="/register" >
+        
+          <Link to="/register" style={{ textDecoration: 'none' ,  color: '#160D58'}}  >
             <button
             >Create Account</button>
           </Link>

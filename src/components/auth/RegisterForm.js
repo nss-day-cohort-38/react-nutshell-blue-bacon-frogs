@@ -36,6 +36,7 @@ const RegisterForm = props => {
 
   return (
     <>
+    <div className="loginForm">
       <div>
         <h3>Sign in</h3>
         <label htmlFor="inputName">Name</label>
@@ -69,11 +70,12 @@ const RegisterForm = props => {
           </button>
         </div>
         <div>
-        <Link to="/login" >
+        <Link to="/login" style={{ textDecoration: 'none' ,  color: '#160D58'}} >
             <button
             >Already a user?</button>
           </Link>
         </div>
+      </div>
       </div>
     </>
   );

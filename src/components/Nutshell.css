@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+/* Broad Styles */
+body {
+    background-color: #FFFBEF;
+    font-family: 'Lora', serif;
+}
+
+body button {
+    display: flex;
+    border-radius: 10px;
+    flex-direction: row;
+    font-family: 'Lora', serif;
+    background-color: #FFFBEF;
+    text-decoration: none;
+    color:  #160D58;
+}
+
+/* Login Form */
 .loginForm {
     display: flex;
     color: #160D58;
     font-family: 'Lora', serif;
     flex-direction: column;
     align-items: center;
-    border: solid 1.5px #160D58;
     padding-top: 100px;
     padding-bottom: 100px;
     margin-top: 50px;
@@ -15,12 +31,21 @@
     padding-right: 30px;
 }
 
+.loginForm div {
+    border-top: solid 2px black;
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: white;
+}
+
 .loginForm input {
     font-size: 15px;
     line-height: 1.5;
     color: #666;
     display: block;
-    width: 100%;
+    width: 50%;
     background: rgb(250, 247, 240);
     height: 50px;
     border-radius: 25px;
@@ -34,11 +59,8 @@
     justify-content: center;
 }
 
-.loginForm button {
-    display: flex;
-    border-radius: 10px;
-    flex-direction: row;
-}
-body {
-    background-color: #FFFBEF;
+
+
+.loginForm button:hover {
+    background-color: #EA9800;
 }
