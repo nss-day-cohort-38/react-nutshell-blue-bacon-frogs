@@ -34,7 +34,7 @@ const EventForm = props => {
     <>
       <form>
         <fieldset>
-          <div>
+          <div className="formContent">
             <label htmlFor="Name">Name: </label>
             <input
               type="text"
@@ -62,11 +62,11 @@ const EventForm = props => {
             />
             <br></br>
           </div>
-          <div>
-            <button type="button" disabled={isLoading} onClick={makeNewEvent}>
+         
+            <button type="button" className="submitButton" disabled={isLoading} onClick={makeNewEvent}>
               Submit
             </button>
-          </div>
+         
         </fieldset>
       </form>
     </>

@@ -43,7 +43,8 @@ const ArticleEditForm = props => {
     <>
       <form>
         <fieldset>
-          <div className="formgrid">
+          <div className="formContent">
+          <label htmlFor="title">Article title: </label>
             <input
               type="text"
               required
@@ -52,8 +53,9 @@ const ArticleEditForm = props => {
               id="title"
               value={article.title}
             />
-            <label htmlFor="title">Article title</label>
-
+          </div>
+          <div className="formContent">
+          <label htmlFor="synopsis">Synopsis: </label>
             <input
               type="text"
               required
@@ -62,7 +64,9 @@ const ArticleEditForm = props => {
               id="synopsis"
               value={article.synopsis}
             />
-            <label htmlFor="synopsis">Synopsis</label>
+            </div>
+            <div className="formContent">
+           <label htmlFor="url">Url: </label>
             <input
               type="text"
               required
@@ -71,12 +75,11 @@ const ArticleEditForm = props => {
               id="url"
               value={article.url}
             />
-            <label htmlFor="url">Url</label>
           </div>
           <div className="alignRight">
             <button
-              type="button"
-              disabled={isLoading}
+              type="button" className="submitButton"
+              disabled={isLoading} 
               onClick={updateExistingArticle}
               className="btn btn-primary"
             >

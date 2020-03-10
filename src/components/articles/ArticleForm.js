@@ -34,7 +34,8 @@ const ArticleForm = props => {
     <>
       <form>
         <fieldset>
-          <div className="formgrid">
+          <div className="formContent">
+          <label htmlFor="title">Title: </label>
             <input
               type="text"
               required
@@ -42,7 +43,9 @@ const ArticleForm = props => {
               id="title"
               placeholder="Article title"
             />
-            <label htmlFor="title">Title</label>
+            </div>
+            <div className="formContent">
+            <label htmlFor="synopsis">Synopsis: </label>
             <input
               type="text"
               required
@@ -50,7 +53,9 @@ const ArticleForm = props => {
               id="synopsis"
               placeholder="Synopsis"
             />
-            <label htmlFor="synopsis">Synopsis</label>
+            </div>
+            <div className="formContent">
+            <label htmlFor="url">Url: </label>
             <input
               type="text"
               required
@@ -58,17 +63,16 @@ const ArticleForm = props => {
               id="url"
               placeholder="Url"
             />
-            <label htmlFor="url">Url</label>
           </div>
-          <div className="alignRight">
+          
             <button
-              type="button"
+              type="button" className="submitButton"
               disabled={isLoading}
               onClick={constructNewArticle}
             >
               Submit
             </button>
-          </div>
+         
         </fieldset>
       </form>
     </>
