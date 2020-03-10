@@ -18,20 +18,36 @@ body button:hover {
     background-color:rgb(255, 197, 91);
 }
 
+.addSection {
+    font-family: 'Lora', serif;
+    width: 100px;
+    height: 50px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+
+.addSectionContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
 /* Controlling overall cards for articles and tasks */
 .card-content {
-    font-family: 'Lora', serif;
     display: flex;
+    font-family: 'Lora', serif;
     justify-content: center;
     flex-direction: column;
     width: 50%;
-    margin-top: 30px;
-    margin-left: 450px;
-    margin-right: 40px;
     background-color: white;
     border-radius: 10px;
     box-shadow:  2.5px 5px rgba(0, 0, 0, 0.14);
+    margin-bottom: 25px;
     
+}
+
+.card-content:first-child {
+    background-color: #4A5C9B;
 }
 
 .card-content {
@@ -39,12 +55,46 @@ body button:hover {
     flex-direction: row;
 }
 
-/* Controlling overall edit and create tasks, etc forms  */
-fieldset {
-    border: 0;
-
+.container-card {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    align-items: center;
 }
 
+/* Controlling overall edit and create tasks, etc forms  */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+fieldset {
+    font-family: 'Lora', serif;
+    display: flex;
+    justify-content: center;
+    border: 0;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 11px 35px rgba(0, 0, 0, 0.14);
+    margin-bottom: 50px;
+    width: 500px;
+}
+
+fieldset input {
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid #4A5C9B;
+}
+
+.submitButton{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 25px;
+    margin-left: 200px;
+    margin-top: 13.5px;
+}
 /* Login Form */
 .loginForm {
     display: flex;
@@ -105,12 +155,6 @@ fieldset {
 
 
 /* Tasks */
-.addTask {
-    font-family: 'Lora', serif;
-    width: 100px;
-    height: 50px;
-    padding-left: 25px;
-}
 
 .crudButtons {
     display: flex;
@@ -136,8 +180,6 @@ fieldset {
     margin-top: 20px;
 }
 
-.addTaskContainer {
-    display: flex;
-    justify-content: center;
-}
 
+
+/* Events page */

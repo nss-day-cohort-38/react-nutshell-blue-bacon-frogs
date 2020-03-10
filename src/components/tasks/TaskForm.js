@@ -23,8 +23,10 @@ const TaskForm = (props) => {
     }
     return (
         <form>
+            
             <fieldset>
-            <label htmlFor="task">Task</label>
+            <div className="formContent">
+            <label htmlFor="task">Task:</label> <span></span>
             <input
               type="text"
               required
@@ -32,9 +34,10 @@ const TaskForm = (props) => {
               id="task"
               placeholder="Task name"
             />
-            </fieldset>
-            <fieldset>
-            <label htmlFor="expectedCompletionDate">Expected Completion Date</label>
+            </div>
+            
+            <div className="formContent">
+            <label htmlFor="expectedCompletionDate">Expected Completion Date:</label> <span></span>
             <input
               type="date"
               required
@@ -42,12 +45,14 @@ const TaskForm = (props) => {
               id="expectedCompletionDate"
               placeholder="Expected Completion Date"
             />
-            </fieldset>
-            <button
+            </div>
+
+            <button className="submitButton"
               type="submit"
               disabled={isLoading}
               onClick={handleSubmit}
             >Submit</button>
+             </fieldset>
         </form>
     )
 }

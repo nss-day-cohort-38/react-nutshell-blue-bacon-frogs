@@ -28,13 +28,13 @@ const TaskList = (props) => {
 
     return (
         <>
-        <div className="addTaskContainer">
-       <button className="addTask" type="button"
+        <div className="addSectionContainer">
+       <button className="addSection" type="button"
                     onClick={() => {props.history.push("/tasks/new")}}>
                     Add Task
                 </button>
         </div>
-        <div className="container-card">
+        <div className="container-card" style={{overflow: 'auto', height: '400px'}}>
             {tasks.map(task => <TaskCard key={task.id} task={task} expectedCompletionDate={task.expectedCompletionDate} delete={deleteTasks} getTasks={getTasks} {...props}/>)}
         </div>
         </>

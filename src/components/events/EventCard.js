@@ -3,7 +3,7 @@ import React from "react";
 
 const EventCard = props => {
   return (
-    <div className="event-card">
+    <div className="card-content">
       <div>
         <div>{props.event.name}</div>
         <div>{props.event.venue}</div>
@@ -20,7 +20,6 @@ const EventCard = props => {
         >
           Delete Event
         </button>
-        <hr></hr>
       </div>
     </div>
   );
