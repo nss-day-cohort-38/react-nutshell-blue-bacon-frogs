@@ -13,6 +13,7 @@ import TaskList from "../components/tasks/TaskList";
 import TaskEditForm from "../components/tasks/TaskEditForm";
 import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
+import MessageEditForm from "./messages/MessageEditForm"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -72,6 +73,16 @@ const AppViews = props => {
         path="/messages"
         render={props => {
           return <ChatBox userId={loggedInUser} {...props} />;
+        }}
+      />
+      <Route
+        path="/messages/:messageId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return <MessageEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route

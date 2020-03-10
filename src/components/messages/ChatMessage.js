@@ -1,23 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import API from "../../modules/ApiManager";
 
 const ChatMessage = props => {
-  console.log(props.message.id);
-  
-  let name = ""
 
-  API.getWithId("users", props.userId)
-  .then(user => {
-    name = user.username
-  })
+  const timeStamp = props.message.time
+  const editButtonClick = () => {
+    props.setIsEditing(true)
+    const messageToEdit = {
+      id: props.message.id,
+      message: props.message.message,
+      time: props.message.time,
+      userId: props.message.userId
+    }
+    props.setMessage(messageToEdit)
+  }
+
+  const name = props.name
+  const firstName = name.split(" ")[0]
 
   return (
     <div className="chatMessage">
-      {props.name}: {props.message.message}
+      <input id={`message--${props.message.id}`} type="hidden"/>
+      {firstName}: {props.message.message}   
+      {/* <span class="messageTime">{timeStamp.toLocaleString()}</span> */}
+      <span>      </span>
       <button
+        className="messageEditButton"
         type="button"
-        // onClick={() => props.history.push(`/animals/${props.message.id}/edit`)}
+        onClick={editButtonClick}
       >
         Edit
       </button>
