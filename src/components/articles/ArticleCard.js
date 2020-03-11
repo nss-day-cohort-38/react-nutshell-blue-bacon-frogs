@@ -4,14 +4,15 @@ import React from "react";
 
 const ArticleCard = props => {
   return ( 
-      <div className="card-content">
+      <div className="articleCard-content">
         <div>
         <h3>
           <span className="content-articleName">{props.article.title}</span>
         </h3>
-        <p>Synopsis: {props.article.synopsis}<br></br><span><a href={props.article.url} target="_blank">Link</a></span></p>
+        <p>Synopsis: {props.article.synopsis}<br></br><span><a className="articleLink"href={props.article.url} target="_blank">Link</a></span></p>
+        <div className="articleCrudButtons">
         <button
-          type="button"
+          type="button" className="articleEditButton"
           onClick={() => props.history.push(`/articles/${props.article.id}/edit`)}
         >
           Edit
@@ -22,6 +23,7 @@ const ArticleCard = props => {
         >
           Delete
         </button>
+        </div>
         </div>
       </div>
   );

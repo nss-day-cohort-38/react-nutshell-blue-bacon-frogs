@@ -63,7 +63,7 @@ const EventForm = props => {
             <br></br>
           </div>
           <div>
-            <button type="button" disabled={isLoading} onClick={makeNewEvent}>
+            <button type="button" className="submitButton" disabled={isLoading} onClick={makeNewEvent}>
               Submit
             </button>
           </div>

@@ -42,7 +42,8 @@ const EventEditForm = props => {
     <>
       <form>
         <fieldset>
-          <div className="formgrid">
+          <div className="formContent">
+          <label htmlFor="name">Event name: </label>
             <input
               type="text"
               required
@@ -51,8 +52,9 @@ const EventEditForm = props => {
               id="name"
               value={event.name}
             />
-            <label htmlFor="name">Event name</label>
-
+           </div>
+           <div className="formContent">
+           <label htmlFor="venue">Venue: </label>
             <input
               type="text"
               required
@@ -60,8 +62,9 @@ const EventEditForm = props => {
               id="venue"
               value={event.venue}
             />
-            <label htmlFor="venue">Venue</label>
-
+            </div>
+            <div className="formContent">
+            <label htmlFor="date">Date: </label>
             <input
               type="date"
               required
@@ -69,7 +72,8 @@ const EventEditForm = props => {
               id="date"
               value={event.date}
             />
-            <label htmlFor="date">Date</label>
+            </div>
+            
 
             <input
               type="hidden"
@@ -78,10 +82,10 @@ const EventEditForm = props => {
               id="userId"
               value={event.userId}
             />
-          </div>
+          
           <div className="alignRight">
             <button
-              type="button"
+              type="button" className="submitButton"
               disabled={isLoading}
               onClick={updateExistingEvent}
             >
