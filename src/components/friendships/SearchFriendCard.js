@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
+import SearchFriendButton from "./SearchFriendButton";
+
 const SearchFriendCard = props => {
   const friendId = sessionStorage.getItem("friendId");
   const activeUserId = sessionStorage.getItem("userId");
@@ -8,19 +10,25 @@ const SearchFriendCard = props => {
     email: "",
     password: ""
   });
+
   const handleFieldChange = evt => {
     const stateToChange = { ...friends };
     stateToChange[evt.target.id] = evt.target.value;
     setFriends(stateToChange);
   };
+
   const checkFriendship = () => {
     API.getFriendList(activeUserId).then(users => {
-      console.log(users[0].userId);
+      console.log("checkFriendship", users);
     });
   };
+
   const addFriend = evt => {
     API.save(friends, "friendships");
   };
+  addFriend();
+
+
   const searchFriend = evt => {
     evt.preventDefault();
     const searchInput = friends.username;
@@ -33,8 +41,8 @@ const SearchFriendCard = props => {
             console.log(friendId);
             return (document.getElementById(
               "search"
-            ).innerHTML += `<br></br><div>${friend.username} ${friend.id}</div>
-                  <button>Add Friend</button>`);
+            ).innerHTML += 
+            `<br></br><div>${friend.username} ${friend.id}</div><button>InnerHTML Button</button>`);
           }
         }
       });
@@ -42,16 +50,22 @@ const SearchFriendCard = props => {
   };
   checkFriendship();
   return (
-    <div>
-      <button onClick={searchFriend}>Search Friend</button>
-      <input
-        type="text"
-        required
-        id="username"
-        onChange={handleFieldChange}
-      ></input>
-      <div id="search"></div>
-    </div>
+    <>
+      <div>
+        <button onClick={searchFriend}>Search Friend</button>
+        <input
+          type="text"
+          required
+          id="username"
+          onChange={handleFieldChange}
+        ></input>
+        <div id="search"></div>
+      </div>
+      <div className="container-cards">
+        <h3>Friends</h3>
+      </div>
+    </>
   );
 };
+
 export default SearchFriendCard;

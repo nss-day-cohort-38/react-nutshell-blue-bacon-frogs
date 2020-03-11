@@ -15,6 +15,7 @@ import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
 import FriendshipList from "./friendships/FriendshipList"
 import SearchFriendCard from "./friendships/SearchFriendCard";
+import SearchFriendButton from "./friendships/SearchFriendButton";
 import MessageEditForm from "./messages/MessageEditForm"
 
 const AppViews = props => {
