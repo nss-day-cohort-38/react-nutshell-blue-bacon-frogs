@@ -18,7 +18,6 @@ import MessageEditForm from "./messages/MessageEditForm"
 const AppViews = props => {
   const hasUser = props.hasUser;
   const setUser = props.setUser;
-  const isAuthenticated = props.isAuthenticated;
   
 
   return (

@@ -26,14 +26,16 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     getMessages();
+    // const scrollBox =document.getElementById("messageBox")
+    // scrollBox.scrollHeight = 999999
 
   }, []);
 
   if (isEditing === false) {
     return (
       <>
-        <div className="entireChat">
-          <div id="chatScrollBox">
+        <div className="container-card-messages">
+          <div id="messageBox" className="container-card-messages" style={{overflow: 'auto', height: '400px'}}>
             {messages.map(message => (
               <ChatMessage
                 key={message.id}
