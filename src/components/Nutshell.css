@@ -46,9 +46,7 @@ body button:hover {
     
 }
 
-.card-content:first-child {
-    background-color: #4A5C9B;
-}
+
 
 .card-content {
     width: 35%;
@@ -183,3 +181,74 @@ fieldset input {
 
 
 /* Events page */
+.eventCRUDButtons {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.eventEditButton {
+    margin-right: 5px;
+}
+
+.eventCard-content {
+    display: flex;
+    font-family: 'Lora', serif;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:  2.5px 5px rgba(0, 0, 0, 0.14);
+    margin-bottom: 25px;
+}
+
+.eventCard-content {
+    width: 35%;
+    flex-direction: row;
+}
+
+.eventCard-content:first-child {
+    background-color: #4A5C9B;
+}
+
+/* Articles page */
+
+.articleCard-content {
+
+    display: flex;
+    font-family: 'Lora', serif;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:  2.5px 5px rgba(0, 0, 0, 0.14);
+    margin-bottom: 25px;
+    align-self: center;
+
+}
+
+.articleCard-content{
+    flex-direction: row;
+}
+
+.articleCrudButtons {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.articleEditButton {
+    margin-right: 5px;
+}
+
+.articleLink{
+    text-decoration: none;
+    color:  #160D58;
+    font-style: italic;
+}
+
+.articleLink:hover {
+    color: rgb(255, 197, 91);
+}

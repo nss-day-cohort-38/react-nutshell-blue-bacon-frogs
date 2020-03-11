@@ -14,7 +14,7 @@ const TaskForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(tasks.task === "" || tasks.expectedCompletionDate === "") {
-            window.alert("Please input task information")
+            window.alert("Please complete all fields.")
         } else {
             setIsLoading(true)
             API.save(tasks, "tasks")
