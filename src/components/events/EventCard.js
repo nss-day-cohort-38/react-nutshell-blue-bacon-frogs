@@ -3,13 +3,14 @@ import React from "react";
 
 const EventCard = props => {
   return (
-    <div className="card-content">
+    <div className="eventCard-content">
       <div>
         <div>{props.event.name}</div>
         <div>{props.event.venue}</div>
         <div>{props.event.date}</div>
+        <div className="eventCRUDButtons">
         <button
-          type="button"
+          type="button" className="eventEditButton"
           onClick={() => props.history.push(`/events/${props.event.id}/edit`)}
         >
           Edit
@@ -20,6 +21,7 @@ const EventCard = props => {
         >
           Delete Event
         </button>
+        </div>
       </div>
     </div>
   );
