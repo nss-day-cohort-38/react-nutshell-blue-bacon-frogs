@@ -25,7 +25,8 @@ const ChatInput = (props) => {
       </div>
       <div className="messageInput">
         <input
-          type="text"
+          type="textarea"
+          className="messageInput"
           value={messageInput.message}
           required
           onChange={handleFieldChange}

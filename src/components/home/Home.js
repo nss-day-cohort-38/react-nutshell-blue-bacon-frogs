@@ -34,7 +34,7 @@ const Home = (props) => {
                 setTasks(taskSortArray[0])
             })
     }
-    
+
     const fetchEvents = () => {
         API.getWithId("events", userId)
             .then(eventsArray => {

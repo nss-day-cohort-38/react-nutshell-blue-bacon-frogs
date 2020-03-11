@@ -60,6 +60,7 @@ body button:hover {
     align-items: center;
 }
 
+
 /* Controlling overall edit and create tasks, etc forms  */
 form {
     display: flex;
@@ -252,6 +253,21 @@ fieldset input {
 .articleLink:hover {
     color: rgb(255, 197, 91);
 }
+
+/* messages */
+
+.container-card-messages {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    align-items: left;
+    padding-left: 10px,
+}
+
+.messageInput {
+    width: 90%;
+}
+
 
 /* Home page css */
 

@@ -9,7 +9,7 @@ const ArticleCard = props => {
         <h3>
           <span className="content-articleName">{props.article.title}</span>
         </h3>
-        <p>Synopsis: {props.article.synopsis}<br></br><span><a className="articleLink"href={props.article.url} target="_blank">Link</a></span></p>
+        <p>Synopsis: {props.article.synopsis}<br></br><span><a className="articleLink"href={props.article.url} target="">Link</a></span></p>
         <div className="articleCrudButtons">
         <button
           type="button" className="articleEditButton"

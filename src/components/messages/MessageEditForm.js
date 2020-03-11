@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../../modules/ApiManager";
+import "../Nutshell.css"
 
 const MessageEditForm = props => {
 
@@ -44,7 +45,6 @@ const MessageEditForm = props => {
   if (isLoading) {
     return (
       <>
-
         <fieldset>
           <div className="formgrid">
             <label htmlFor="name">Message to Edit</label>
@@ -52,7 +52,7 @@ const MessageEditForm = props => {
               <input
                 type="text"
                 required
-                className="form-control"
+                className="messageInput"
                 onChange={handleFieldChange}
                 id="message"
                 value={props.message.message}
@@ -60,7 +60,6 @@ const MessageEditForm = props => {
             </div>
           </div>
           <div className="alignRight">
-
             <button
               type="button"
               onClick={cancelButton}>
@@ -74,15 +73,14 @@ const MessageEditForm = props => {
   } else {
     return (
       <>
-
         <fieldset>
           <div className="formgrid">
             <label htmlFor="name">Message to Edit</label>
             <div>
               <input
-                type="text"
+                type="textarea"
                 required
-                className="form-control"
+                className="messageInput"
                 onChange={handleFieldChange}
                 id="message"
                 value={props.message.message}
@@ -104,7 +102,6 @@ const MessageEditForm = props => {
               Cancel</button>
           </div>
         </fieldset>
-
       </>
     );
   }
