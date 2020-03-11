@@ -20,12 +20,14 @@ const Login = props => {
       .then(users => {
         const user = users.find(user => user.email === credentials.email && 
           user.password === credentials.password)
+          const passwordArray = credentials.password.split("")
+          console.log(passwordArray)
           if (user !== undefined) {
             sessionStorage.setItem("userId", user.id)
             props.setUser(credentials)
             props.history.push("/home")
           } else {
-            window.alert("try again")
+            window.alert("please try again")
           }
       })
   };

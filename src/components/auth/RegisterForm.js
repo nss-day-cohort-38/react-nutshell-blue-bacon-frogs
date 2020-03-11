@@ -20,7 +20,8 @@ const RegisterForm = props => {
     evt.preventDefault();
     API.get("users").then(users => {
       const user = users.find(user => user.email === credentials.email);
-      if (user === undefined) {
+      const passwordArray = credentials.password.split("")
+      if (user === undefined && passwordArray.length > 4) {
         setCredentials("credentials");
         API.save(credentials, "users");
         API.get("users").then(users => {
@@ -29,7 +30,9 @@ const RegisterForm = props => {
           props.setUser(credentials);
           props.history.push("/home");
         });
-      } else {
+      } else if (credentials.password.length < 4){
+      window.alert("password must be at least 4 characters long")
+      } else if (credentials.email === user.email) {
         window.alert("email already exists");
       }
     });
