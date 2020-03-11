@@ -6,6 +6,9 @@ const API = {
     getWithId(str, userId) {
         return fetch(apiURL + str + "?userId=" + userId).then(entries => entries.json());
     },
+    specialGetWithId(str, userId) {
+        return fetch(apiURL + str + "/" + userId).then(entries => entries.json());
+    },
     get(str) {
         return fetch(apiURL + str).then(entries => entries.json());
     },
@@ -37,7 +40,19 @@ const API = {
     }, 
     expand(str, toExpand) {
         return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries => entries.json());
-      }
+      },
+    embedWithId(str, id, toEmbed) {
+        return fetch(`${apiURL}${str}/${id}?_embed=${toEmbed}`).then(entries => entries.json());
+      },
+      patch(objToEdit, str, id) {
+        return fetch(`${apiURL}${str}/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(objToEdit)
+        });
+    }, 
 }
 export default API;
 
