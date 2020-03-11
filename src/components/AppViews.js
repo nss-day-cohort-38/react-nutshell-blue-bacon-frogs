@@ -13,6 +13,9 @@ import TaskList from "../components/tasks/TaskList";
 import TaskEditForm from "../components/tasks/TaskEditForm";
 import ChatBox from "./messages/ChatBox";
 import RegisterForm from "./auth/RegisterForm";
+import FriendshipList from "./friendships/FriendshipList"
+import SearchFriendCard from "./friendships/SearchFriendCard";
+import SearchFriendButton from "./friendships/SearchFriendButton";
 import MessageEditForm from "./messages/MessageEditForm"
 
 const AppViews = props => {
@@ -84,13 +87,14 @@ const AppViews = props => {
           }
         }}
       />
+
       <Route
         path="/register"
         render={props => {
           return <RegisterForm setUser={setUser} {...props} />;
         }}
       />
-      
+
       <Route
         exact
         path="/tasks"
@@ -154,6 +158,28 @@ const AppViews = props => {
             return <Redirect to="/login" />;
           }
         }}
+      />
+      <Route
+        exact
+        path="/friendships"
+        render={props => {
+          if (hasUser) {
+            return <FriendshipList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+      exact
+      path="/friendships/search"
+      render={props => {
+        if(hasUser) {
+          return <SearchFriendCard {...props}/>
+        } else {
+          return <Redirect to="/login"/>
+        }
+      }}
       />
     </React.Fragment>
   );
