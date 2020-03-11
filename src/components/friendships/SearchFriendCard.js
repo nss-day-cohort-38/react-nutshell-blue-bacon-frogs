@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
-// import SearchFriendButton from "./SearchFriendButton";
 
 const SearchFriendCard = props => {
   const friendId = sessionStorage.getItem("friendId");
@@ -22,11 +21,6 @@ const SearchFriendCard = props => {
       console.log("checkFriendship", users);
     });
   };
-
-  const addFriend = evt => {
-    API.save(friends, "friendships");
-  };
-  addFriend();
 
   const searchFriend = evt => {
     evt.preventDefault();
