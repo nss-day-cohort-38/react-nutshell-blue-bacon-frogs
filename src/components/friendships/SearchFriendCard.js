@@ -28,7 +28,6 @@ const SearchFriendCard = props => {
   };
   addFriend();
 
-
   const searchFriend = evt => {
     evt.preventDefault();
     const searchInput = friends.username;
@@ -41,8 +40,7 @@ const SearchFriendCard = props => {
             console.log(friendId);
             return (document.getElementById(
               "search"
-            ).innerHTML += 
-            `<br></br><div>${friend.username} ${friend.id}</div><button>InnerHTML Button</button>`);
+            ).innerHTML += `<br></br><div>${friend.username} ${friend.id}</div><button>InnerHTML Button</button>`);
           }
         }
       });
@@ -63,6 +61,17 @@ const SearchFriendCard = props => {
       </div>
       <div className="container-cards">
         <h3>Friends</h3>
+        <div className="container-card">
+          <div>test {friends}</div>
+          {friends.map(friend => (
+            <SearchFriendButton
+              key={friend.id}
+              friend={friend}
+              // deleteEvent={deleteEvent}
+              {...props}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

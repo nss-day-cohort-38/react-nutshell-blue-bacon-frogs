@@ -7,6 +7,7 @@ const SearchFriendButton = props => {
         <h4>Friend</h4>
         <button>Add/Delete Friend</button>
         <div id="search"></div>
+        {/* <div>{friend}</div> */}
       </div>
       <div className="container-cards"></div>
     </>
