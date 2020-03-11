@@ -13,7 +13,7 @@ const Home = () => {
     const taskFetch = () => {
         API.getWithId("tasks", userId)
             .then(taskArray => {
-                taskArray.sort(function (a, b) {
+                const taskSortArray = taskArray.sort(function (a, b) {
                     if (a.expectedCompletionDate < b.expectedCompletionDate) {
                         return -1;
                     }
@@ -22,10 +22,19 @@ const Home = () => {
                     }
                     return 0;
                 })
-                setTasks(taskArray[0])
+                taskSortArray.sort(function (a, b) {
+                    if (a.isComplete === true && b.isComplete === false) {
+                        return 1;
+                    }
+                    if (a.isComplete === false && b.isComplete === true) {
+                        return -1;
+                    }
+                    return 0;
+                })
+                setTasks(taskSortArray[0])
             })
     }
-
+    
     const fetchEvents = () => {
         API.getWithId("events", userId)
             .then(eventsArray => {
@@ -80,11 +89,11 @@ const Home = () => {
                 {!fetchedEvents
                     ? <h1>No Events</h1>
                     : <h1>{fetchedEvents.name}</h1>}
-                {fetchedArticles === undefined 
-                    ? <h1>No Articles</h1> 
+                {fetchedArticles === undefined
+                    ? <h1>No Articles</h1>
                     : <h1>{fetchedArticles.title}</h1>}
-                {fetchedMessages === undefined 
-                    ? <h1>No New Messages</h1> 
+                {fetchedMessages === undefined
+                    ? <h1>No New Messages</h1>
                     : <h1>You have {fetchedMessages.length} new messages!</h1>}
             </div>
         </>
