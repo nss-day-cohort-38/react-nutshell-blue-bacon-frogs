@@ -1,6 +1,14 @@
 import React, { useState, useReducer } from "react";
 
 const SearchFriendButton = props => {
+    const [friends, setFriends] = useState({
+        username: "",
+        email: "",
+        password: ""
+      });
+
+      console.log(friends);
+      
   return (
     <>
       <div>

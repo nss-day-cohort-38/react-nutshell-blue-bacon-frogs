@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
-import SearchFriendButton from "./SearchFriendButton";
+// import SearchFriendButton from "./SearchFriendButton";
 
 const SearchFriendCard = props => {
   const friendId = sessionStorage.getItem("friendId");
@@ -31,7 +31,7 @@ const SearchFriendCard = props => {
   const searchFriend = evt => {
     evt.preventDefault();
     const searchInput = friends.username;
-    document.getElementById("search").innerHTML = "";
+    document.getElementById("search").innerHTML = `<br></br> <strong>Matched users</strong><br></br>`;
     API.get("users").then(friends => {
       friends.forEach(friend => {
         for (const value of Object.values(friend)) {
@@ -40,7 +40,7 @@ const SearchFriendCard = props => {
             console.log(friendId);
             return (document.getElementById(
               "search"
-            ).innerHTML += `<br></br><div>${friend.username} ${friend.id}</div><button>InnerHTML Button</button>`);
+            ).innerHTML += `<br></br><div>${friend.username}</div>`);
           }
         }
       });
@@ -60,18 +60,6 @@ const SearchFriendCard = props => {
         <div id="search"></div>
       </div>
       <div className="container-cards">
-        <h3>Friends</h3>
-        <div className="container-card">
-          <div>test {friends}</div>
-          {friends.map(friend => (
-            <SearchFriendButton
-              key={friend.id}
-              friend={friend}
-              // deleteEvent={deleteEvent}
-              {...props}
-            />
-          ))}
-        </div>
       </div>
     </>
   );
