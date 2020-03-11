@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import API from "../../modules/ApiManager"
 
-const Home = () => {
+const Home = (props) => {
 
     const userId = parseInt(sessionStorage.getItem("userId"))
-
     const [tasks, setTasks] = useState([])
     const [fetchedMessages, setMessages] = useState([])
     const [fetchedEvents, setEvents] = useState([])
@@ -72,29 +72,57 @@ const Home = () => {
             })
     }
 
+    const fetchUsers = () => {
+        return API.specialGetWithId("users", userId).then(user => user.username)
+    }
+   
+
     useEffect(() => {
         taskFetch();
         fetchEvents();
         fetchArticles();
         fetchMessages();
+        fetchUsers();
 
     }, []);
 
     return (
         <>
             <div className="homeContainer">
+                <h1>Welcome to Nutshell!</h1>
+                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} to="/tasks">
+                
+                <div className="taskContainer">
+                <h2 className="homeHeaders">Upcoming tasks</h2>
                 {tasks === undefined || tasks.isComplete === true
-                    ? <h1>You have no tasks</h1>
-                    : <h1>{tasks.task}</h1>}
+                    ? <h3>No upcoming tasks to complete</h3>
+                    : <h3>{tasks.task}</h3>}
+                </div>
+                </Link>
+                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} to="/events">
+                <div className="eventContainer">
+                    <h2 className="homeHeaders">Upcoming events</h2>
                 {!fetchedEvents
-                    ? <h1>No Events</h1>
-                    : <h1>{fetchedEvents.name}</h1>}
+                    ? <h3>No upcoming events to attend</h3>
+                    : <h3>{fetchedEvents.name}</h3>}
+                </div>
+                </Link>
+                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} to="/articles">
+                <div className="articleContainer">
+                <h2 className="homeHeaders">Articles</h2>
                 {fetchedArticles === undefined
-                    ? <h1>No Articles</h1>
-                    : <h1>{fetchedArticles.title}</h1>}
+                    ? <h3>No Articles available</h3>
+                    : <h3>{fetchedArticles.title}</h3>}
+                </div>
+                </Link>
+                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} to="/messages">
+                <div className="messageContainer">
+                <h2 className="homeHeaders">Messages</h2>
                 {fetchedMessages === undefined
-                    ? <h1>No New Messages</h1>
-                    : <h1>You have {fetchedMessages.length} new messages!</h1>}
+                    ? <h3>No New Messages</h3>
+                    : <h3>You have {fetchedMessages.length} new messages!</h3>}
+                </div>
+                </Link>
             </div>
         </>
     )
