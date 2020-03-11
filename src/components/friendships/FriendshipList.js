@@ -15,7 +15,6 @@ const FriendshipList = props => {
     });
   };
 
-
   const removeFriend = (id, str) => {
     API.delete(id, str).then(() =>
       API.getWithId(str, activeUserId).then(usersFromApi => {
