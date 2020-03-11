@@ -268,10 +268,7 @@ fieldset input {
     width: 90%;
 }
 
-#messageBox {
-    display: flex;
-    flex-direction:column-reverse
-}
+
 /* Home page css */
 
 .homeContainer {
