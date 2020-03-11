@@ -10,6 +10,12 @@ const Home = (props) => {
     const [fetchedEvents, setEvents] = useState([])
     const [fetchedArticles, setArticles] = useState([])
 
+    const handleMessages = () => {
+        const messageTime = Date.now()
+        const messageObject = {messageTime: messageTime}
+        API.patch(messageObject, "users", userId)
+      }
+
     const taskFetch = () => {
         API.getWithId("tasks", userId)
             .then(taskArray => {
@@ -63,10 +69,10 @@ const Home = (props) => {
     const fetchMessages = () => {
         API.specialGetWithId("users", userId)
             .then(user => {
-                const logoutTime = user.logoutTime
+                const messageTime = user.messageTime
                 API.get("messages")
                     .then(messagesArray => {
-                        const filteredArray = messagesArray.filter(message => message.time > logoutTime && message.userId !== userId)
+                        const filteredArray = messagesArray.filter(message => message.time > messageTime && message.userId !== userId)
                         setMessages(filteredArray)
                     })
             })
@@ -115,7 +121,7 @@ const Home = (props) => {
                     : <h3>{fetchedArticles.title}</h3>}
                 </div>
                 </Link>
-                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} to="/messages">
+                <Link className="nav-link" style={{ textDecoration: 'none',  color: 'black' }} onClick={handleMessages} to="/messages">
                 <div className="messageContainer">
                 <h2 className="homeHeaders">Messages</h2>
                 {fetchedMessages === undefined

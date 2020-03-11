@@ -17,6 +17,12 @@ const NavBar = props => {
         props.history.push("/login")
     }
 
+    const handleMessages = () => {
+      const messageTime = Date.now()
+      const messageObject = {messageTime: messageTime}
+      API.patch(messageObject, "users", userId)
+    }
+
     return (
         <nav>
             {props.hasUser ? (
@@ -37,7 +43,7 @@ const NavBar = props => {
             </Link>
                     </li>
                     <li>
-                        <Link className="nav-link" style={{ textDecoration: 'none', color: '#160D58' }} to="/messages">
+                        <Link className="nav-link" onClick={handleMessages} style={{ textDecoration: 'none', color: '#160D58' }} to="/messages">
                             Messages
             </Link>
                     </li>
