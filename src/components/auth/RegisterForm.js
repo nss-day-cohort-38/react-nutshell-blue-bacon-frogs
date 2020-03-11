@@ -6,7 +6,8 @@ const RegisterForm = props => {
   const [credentials, setCredentials] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    logoutTime: ""
   }); //initial state equal to an object with keys email and password that have empty string value
 
   const handleFieldChange = evt => {

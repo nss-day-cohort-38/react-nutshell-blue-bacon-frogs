@@ -9,7 +9,6 @@ const ChatInput = (props) => {
       .then(() => {
         props.getMessages("messages", "users")
         setMessageInput({ userId: props.userId, message: "", time: "" })
-        console.log("after setMessage")
       })
   }
 
