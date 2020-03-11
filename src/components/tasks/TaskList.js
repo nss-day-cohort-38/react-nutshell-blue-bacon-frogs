@@ -4,9 +4,10 @@ import API from "../../modules/ApiManager"
 
 const TaskList = (props) => {
     const [tasks, setTasks] = useState([])
+    const userId = parseInt(sessionStorage.getItem("userId"))
     
     const getTasks = () => {
-        API.get("tasks").then(tasksFromAPI => {
+        API.getWithId("tasks", userId).then(tasksFromAPI => {
             console.log(tasksFromAPI)
             setTasks(tasksFromAPI)
         })
@@ -15,7 +16,7 @@ const TaskList = (props) => {
     const deleteTasks = (id) => {
         API.delete(id, "tasks")
         .then(() => {
-            API.get("tasks").then(setTasks)
+            API.getWithId("tasks", userId).then(setTasks)
         })
     }
 
