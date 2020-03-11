@@ -8,7 +8,6 @@ const TaskList = (props) => {
     
     const getTasks = () => {
         API.getWithId("tasks", userId).then(tasksFromAPI => {
-            console.log(tasksFromAPI)
             setTasks(tasksFromAPI)
         })
     }

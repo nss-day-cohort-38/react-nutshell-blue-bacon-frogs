@@ -18,7 +18,6 @@ const SearchFriendCard = props => {
 
   const checkFriendship = () => {
     API.getFriendList(activeUserId).then(users => {
-      console.log("checkFriendship", users);
     });
   };
 
@@ -31,7 +30,6 @@ const SearchFriendCard = props => {
         for (const value of Object.values(friend)) {
           if (typeof value === "string" && value.includes(searchInput)) {
             sessionStorage.setItem("friendId", friend.id);
-            console.log(friendId);
             return (document.getElementById(
               "search"
             ).innerHTML += `<br></br><div>${friend.username}</div>`);
