@@ -57,7 +57,7 @@ const Home = () => {
                 const logoutTime = user.logoutTime
                 API.get("messages")
                     .then(messagesArray => {
-                        const filteredArray = messagesArray.filter(message => message.time > logoutTime)
+                        const filteredArray = messagesArray.filter(message => message.time > logoutTime && message.userId !== userId)
                         setMessages(filteredArray)
                     })
             })
