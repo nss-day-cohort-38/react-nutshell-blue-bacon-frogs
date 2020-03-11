@@ -37,7 +37,16 @@ const API = {
     }, 
     expand(str, toExpand) {
         return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries => entries.json());
-      }
+      }, 
+    patch(id, time) {
+        return(fetch`${apiURL}/users/${id}`, {
+            method: "PATCH", 
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify({id, time})
+        })
+    }
 }
 export default API;
 
